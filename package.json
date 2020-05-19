@@ -1,0 +1,18 @@
+{
+  "name": "nepali-solitaire",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ayrbox/nepali-solitaire.git",
+  "author": "ayrbox <srdx7@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "gatsby": "^2.21.40",
+    "gatsby-plugin-sass": "^2.3.1",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "scripts": {
+    "dev": "gatsby develop"
+  }
+}
