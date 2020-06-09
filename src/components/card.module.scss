@@ -6,9 +6,12 @@ $card-color-red: #df0000;
   @return ($value / 200 * 16) * 1em;
 }
 
+@mixin transform($transformArg) {
+  transform: $transformArg;
+}
+
 .card {
   // 'Suit-Regular',
-  border: 1px solid red;
   background-color: $card-bg-color;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   border-radius: cardem(10);
@@ -17,6 +20,7 @@ $card-color-red: #df0000;
   width: cardem(200);
   height: cardem(280);
   margin: 0 15px 15px 0;
+  border: 1px solid;
   position: relative;
   z-index: 2;
 
@@ -26,11 +30,40 @@ $card-color-red: #df0000;
 
   &.diamond,
   &.heart {
+    border-color: $card-color-red;
     color: $card-color-red;
   }
 
   &.spade,
   &.club {
+    border-color: $card-color-black;
     color: $card-color-black;
+  }
+}
+
+.corner {
+  line-height: 1;
+  // overflow: hidden
+  position: absolute;
+  text-align: center;
+  span {
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    font-size: 2em;
+  }
+
+  .number {
+    height: cardem(24) / 2;
+    line-height: cardem(24) / 2;
+  }
+  &.top {
+    left: cardem(8);
+    top: cardem(12);
+  }
+  &.bottom {
+    bottom: cardem(12);
+    right: cardem(8);
+    @include transform(rotate(180deg));
   }
 }
