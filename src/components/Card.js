@@ -1,22 +1,23 @@
 import React from "react";
 import clsx from "clsx";
 import cardStyles from "./card.module.scss";
-import Symbols from "./Symbols";
 
-const Card = ({ number, suit }) => {
-  const cardClass = clsx(cardStyles.card, {
-    [cardStyles[suit]]: true
-  });
+import { RANK, SUIT } from "../constants";
+
+// TODO: change number to name
+const Card = ({ rank, suit }) => {
+  const { symbol: suitSymbol, color } = SUIT[suit];
+  const { symbol: rankSymbol } = RANK[rank];
 
   return (
-    <div className={cardClass}>
+    <div className={cardStyles.card} style={{ color }}>
       <div className={clsx(cardStyles.corner, cardStyles.top)}>
-        <span className={cardStyles.number}>{number}</span>
-        <Symbols suit={suit} />
+        <span className={cardStyles.number}>{rankSymbol}</span>
+        <span dangerouslySetInnerHTML={{ __html: suitSymbol }} />
       </div>
       <div className={clsx(cardStyles.corner, cardStyles.bottom)}>
-        <span className={cardStyles.number}>{number}</span>
-        <Symbols suit={suit} />
+        <span className={cardStyles.number}>{rankSymbol}</span>
+        <span dangerouslySetInnerHTML={{ __html: suitSymbol }} />
       </div>
     </div>
   );

@@ -1,6 +1,4 @@
 $card-bg-color: #fff;
-$card-color-black: #000;
-$card-color-red: #df0000;
 
 @function cardem($value) {
   @return ($value / 200 * 16) * 1em;
@@ -11,7 +9,6 @@ $card-color-red: #df0000;
 }
 
 .card {
-  // 'Suit-Regular',
   background-color: $card-bg-color;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   border-radius: cardem(10);
@@ -27,23 +24,10 @@ $card-color-red: #df0000;
   &.noshadow {
     box-shadow: none;
   }
-
-  &.diamond,
-  &.heart {
-    border-color: $card-color-red;
-    color: $card-color-red;
-  }
-
-  &.spade,
-  &.club {
-    border-color: $card-color-black;
-    color: $card-color-black;
-  }
 }
 
 .corner {
   line-height: 1;
-  // overflow: hidden
   position: absolute;
   text-align: center;
   span {

@@ -3,32 +3,17 @@ import React from "react";
 import "../sass/main.scss";
 import Card from "../components/Card";
 
-const cardNumbers = [
-  "A",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "10",
-  "J",
-  "Q",
-  "K"
-];
-const cardSuits = ["spade", "heart", "club", "diamond"];
+import { SUITS, RANKS } from "../constants";
 
 const IndexPage = () => {
   return (
     <div>
       <h1>Welcome to Nepali Solitaire</h1>
       <div style={{ fontSize: "12px" }}>
-        {cardSuits.map(suit => (
+        {SUITS.map(({ name: suit }) => (
           <div key={suit}>
-            {cardNumbers.map(num => (
-              <Card key={num} suit={suit} number={num} />
+            {RANKS.map(({ name: rank }) => (
+              <Card key={rank} suit={suit} rank={rank} />
             ))}
           </div>
         ))}
