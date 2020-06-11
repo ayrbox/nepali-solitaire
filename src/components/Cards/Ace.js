@@ -1,10 +1,17 @@
 import React from "react";
 import CardBase from "../CardBase";
 
-const Ace = () => {
+import cardsStyles from "./cards.module.scss";
+import { SUIT } from "../../constants";
+
+const Ace = ({ suit }) => {
+  const { symbol } = SUIT[suit];
   return (
-    <CardBase suit="spade" rank="ace">
-      Big a here
+    <CardBase suit={suit} rank="ace">
+      <span
+        className={cardsStyles.middleCenterLarge}
+        dangerouslySetInnerHTML={{ __html: symbol }}
+      />
     </CardBase>
   );
 };

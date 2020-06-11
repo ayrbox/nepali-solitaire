@@ -1,0 +1,127 @@
+@import "../../sass/utils";
+
+.card-suit {
+  font-size: $suit-size;
+  font-weight: normal;
+  width: suitem(50);
+  height: suitem(57);
+  line-height: suitem(57);
+  position: absolute;
+  text-align: center;
+}
+
+.middleCenterLarge {
+  @extend .card-suit;
+  font-size: cardem(128);
+  left: suitem(33);
+  top: suitem(43);
+}
+
+.topCenter {
+  @extend .card-suit;
+  left: suitem(76);
+  top: suitem(24);
+}
+
+.topLeft {
+  @extend .card-suit;
+  left: suitem(30);
+  top: suitem(24);
+}
+
+.topRight {
+  right: suitem(30);
+  top: suitem(24);
+}
+
+.middleCenter {
+  @extend .card-suit;
+  left: suitem(76);
+  top: suitem(110);
+}
+
+.middleTop {
+  @extend .card-suit;
+  left: suitem(76);
+  top: suitem(70);
+}
+
+.middleBottom {
+  @extend .card-suit;
+  bottom: suitem(70);
+  left: suitem(76);
+
+  @include transform(rotate(180deg));
+}
+
+.middleLeft {
+  @extend .card-suit;
+  left: suitem(30);
+  top: suitem(110);
+}
+
+.middleRight {
+  @extend .card-suit;
+  right: suitem(30);
+  top: suitem(110);
+}
+
+.middleTopCenter {
+  @extend .card-suit;
+  left: suitem(76);
+  top: suitem(60);
+}
+
+.middleTopLeft {
+  @extend .card-suit;
+  left: suitem(30);
+  top: suitem(80);
+}
+
+.middleTopRight {
+  @extend .card-suit;
+  right: suitem(30);
+  top: suitem(80);
+}
+
+.middleBottomLeft {
+  @extend .card-suit;
+  bottom: suitem(80);
+  left: suitem(30);
+  @include transform(rotate(180deg));
+}
+
+.middleBottomRight {
+  @extend .card-suit;
+  bottom: suitem(80);
+  right: suitem(30);
+  @include transform(rotate(180deg));
+}
+
+.middleBottomCenter {
+  @extend .card-suit;
+  bottom: suitem(60);
+  left: suitem(76);
+  @include transform(rotate(180deg));
+}
+
+.bottomCenter {
+  @extend .card-suit;
+  bottom: suitem(24);
+  left: suitem(76);
+  @include transform(rotate(180deg));
+}
+
+.bottomLeft {
+  @extend .card-suit;
+  bottom: suitem(24);
+  left: suitem(30);
+  @include transform(rotate(180deg));
+}
+
+.bottomRight {
+  @extend .card-suit;
+  bottom: suitem(24);
+  right: suitem(30);
+  @include transform(rotate(180deg));
+}

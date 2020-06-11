@@ -1,5 +1,11 @@
+$suit-size: 5.8em; /* TODO: move to _variables */
+
 @function cardem($value) {
   @return ($value / 200 * 16) * 1em;
+}
+
+@function suitem($value) {
+  @return (cardem($value) / $suit-size) * 1em;
 }
 
 @mixin transform($transformArg) {
