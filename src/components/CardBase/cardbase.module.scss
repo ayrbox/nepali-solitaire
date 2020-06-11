@@ -1,32 +1,26 @@
+@import "../../sass/utils";
+
 $card-bg-color: #fff;
-
-@function cardem($value) {
-  @return ($value / 200 * 16) * 1em;
-}
-
-@mixin transform($transformArg) {
-  transform: $transformArg;
-}
 
 .card {
   background-color: $card-bg-color;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   border-radius: cardem(10);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  float: left;
   width: cardem(200);
   height: cardem(280);
   margin: 0 15px 15px 0;
   border: 1px solid;
   position: relative;
   z-index: 2;
+  float: left;
 
   &.noshadow {
     box-shadow: none;
   }
 }
 
-.corner {
+.cardCorner {
   line-height: 1;
   position: absolute;
   text-align: center;
@@ -37,17 +31,21 @@ $card-bg-color: #fff;
     font-size: 2em;
   }
 
-  .number {
+  .cardCornerNumber {
     height: cardem(24) / 2;
     line-height: cardem(24) / 2;
   }
-  &.top {
-    left: cardem(8);
-    top: cardem(12);
-  }
-  &.bottom {
-    bottom: cardem(12);
-    right: cardem(8);
-    @include transform(rotate(180deg));
-  }
+}
+
+.cardCornerTop {
+  @extend .cardCorner;
+  left: cardem(8);
+  top: cardem(12);
+}
+
+.cardCornerBottom {
+  @extend .cardCorner;
+  bottom: cardem(12);
+  right: cardem(8);
+  @include transform(rotate(180deg));
 }
