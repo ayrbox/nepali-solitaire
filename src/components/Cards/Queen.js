@@ -1,9 +1,7 @@
 import React from "react";
-import clsx from "clsx";
 import CardBase from "../CardBase";
 
 import cardsStyles from "./cards.module.scss";
-import { SUIT } from "../../constants";
 import spadeFace from "./images/face-queen-spade.png";
 import heartFace from "./images/face-queen-heart.png";
 import diamondFace from "./images/face-queen-diamond.png";
@@ -17,12 +15,15 @@ const FACE_IMG = {
 };
 
 const Ace = ({ suit }) => {
-  const { symbol } = SUIT[suit];
   const faceImg = FACE_IMG[suit];
   return (
     <CardBase suit={suit} rank="queen">
       <span>
-        <img src={faceImg} className={cardsStyles.faceCard} />
+        <img
+          src={faceImg}
+          className={cardsStyles.faceCard}
+          alt={`Queen of ${suit}`}
+        />
       </span>
     </CardBase>
   );
