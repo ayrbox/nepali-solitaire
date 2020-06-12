@@ -30,6 +30,7 @@
 }
 
 .topRight {
+  @extend .card-suit;
   right: suitem(30);
   top: suitem(24);
 }
@@ -124,4 +125,12 @@
   bottom: suitem(24);
   right: suitem(30);
   @include transform(rotate(180deg));
+}
+
+.faceCard {
+  position: absolute;
+  left: cardem(32);
+  top: cardem(26);
+  width: cardem(135);
+  height: cardem(228);
 }

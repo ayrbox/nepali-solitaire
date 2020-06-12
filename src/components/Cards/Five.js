@@ -9,7 +9,23 @@ const Ace = ({ suit }) => {
   return (
     <CardBase suit={suit} rank="five">
       <span
-        className={cardsStyles.middleCenterLarge}
+        className={cardsStyles.topLeft}
+        dangerouslySetInnerHTML={{ __html: symbol }}
+      />
+      <span
+        className={cardsStyles.topRight}
+        dangerouslySetInnerHTML={{ __html: symbol }}
+      />
+      <span
+        className={cardsStyles.middleCenter}
+        dangerouslySetInnerHTML={{ __html: symbol }}
+      />
+      <span
+        className={cardsStyles.bottomLeft}
+        dangerouslySetInnerHTML={{ __html: symbol }}
+      />
+      <span
+        className={cardsStyles.bottomRight}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
     </CardBase>

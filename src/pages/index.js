@@ -21,24 +21,9 @@ import {
 import { SUITS, RANKS } from "../constants";
 
 const IndexPage = () => {
-  const suit = "heart";
   return (
     <div>
       <h1>Welcome to Nepali Solitaire</h1>
-
-      <Ace suit={suit} />
-      <Two suit={suit} />
-      <Three suit={suit} />
-      <Four suit={suit} />
-      <Five suit={suit} />
-      <Six suit={suit} />
-      <Seven suit={suit} />
-      <Eight suit={suit} />
-      <Nine suit={suit} />
-      <Ten suit={suit} />
-      <Jack suit={suit} />
-      <Queen suit={suit} />
-      <King suit={suit} />
       <div
         style={{
           fontSize: "12px",
@@ -47,6 +32,19 @@ const IndexPage = () => {
       >
         {SUITS.map(({ name: suit }) => (
           <Fragment key={suit}>
+            <Ace suit={suit} />
+            <Two suit={suit} />
+            <Three suit={suit} />
+            <Four suit={suit} />
+            <Five suit={suit} />
+            <Six suit={suit} />
+            <Seven suit={suit} />
+            <Eight suit={suit} />
+            <Nine suit={suit} />
+            <Ten suit={suit} />
+            <Jack suit={suit} />
+            <Queen suit={suit} />
+            <King suit={suit} />
             {RANKS.map(({ name: rank }) => (
               <Card key={rank} suit={suit} rank={rank}>
                 {rank}
