@@ -1,39 +1,17 @@
 import React from "react";
 
 import "../sass/main.scss";
-import Card from "../components/Card";
-import { SUITS, RANKS } from "../constants";
-
-import shuffle from "lodash/shuffle";
+import Board from "../components/Board";
+import DeckProvider from "../contexts/Deck";
 
 const IndexPage = () => {
-  const sortedDeck = RANKS.map(({ name: rank, value }) => {
-    return SUITS.map(({ name: suit }) => ({
-      rank,
-      suit,
-      value
-    }));
-  }).reduce((a, arr) => {
-    return [...a, ...arr];
-  }, []);
-
-  const shuffledDeck = shuffle(sortedDeck);
-
-  console.log(shuffledDeck);
   return (
-    <div>
-      <h1>Welcome to Nepali Solitaire</h1>
-      <div style={{ fontSize: "8px" }}>
-        {shuffledDeck.map(({ suit, rank, selected }) => (
-          <Card
-            key={`${suit}-${rank}`}
-            suit={suit}
-            rank={rank}
-            selected={selected}
-          />
-        ))}
+    <DeckProvider>
+      <div>
+        <h1>Welcome to Nepali Solitaire</h1>
+        <Board />
       </div>
-    </div>
+    </DeckProvider>
   );
 };
 
