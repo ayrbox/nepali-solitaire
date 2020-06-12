@@ -32,9 +32,9 @@ const CARD_MAPPING = {
   king: King
 };
 
-const Card = ({ rank, suit }) => {
+const Card = ({ rank, suit, selected }) => {
   const CardToRender = CARD_MAPPING[rank];
-  return <CardToRender suit={suit} />;
+  return <CardToRender suit={suit} selected={selected} />;
 };
 
 export default Card;

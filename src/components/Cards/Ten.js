@@ -4,10 +4,10 @@ import CardBase from "../CardBase";
 import cardsStyles from "./cards.module.scss";
 import { SUIT } from "../../constants";
 
-const Ace = ({ suit }) => {
+const Ace = ({ suit, selected }) => {
   const { symbol } = SUIT[suit];
   return (
-    <CardBase suit={suit} rank="ten">
+    <CardBase suit={suit} rank="ten" selected={selected}>
       <span
         className={cardsStyles.topLeft}
         dangerouslySetInnerHTML={{ __html: symbol }}

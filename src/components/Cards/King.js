@@ -14,10 +14,10 @@ const FACE_IMG = {
   club: clubFace
 };
 
-const Ace = ({ suit }) => {
+const Ace = ({ suit, selected }) => {
   const faceImg = FACE_IMG[suit];
   return (
-    <CardBase suit={suit} rank="king">
+    <CardBase suit={suit} rank="king" selected={selected}>
       <span>
         <img
           src={faceImg}

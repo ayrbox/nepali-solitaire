@@ -18,6 +18,10 @@ $card-bg-color: #fff;
   &.noshadow {
     box-shadow: none;
   }
+
+  &.cardSelected {
+    opacity: 0.7;
+  }
 }
 
 .cardCorner {

@@ -24,8 +24,13 @@ const IndexPage = () => {
     <div>
       <h1>Welcome to Nepali Solitaire</h1>
       <div style={{ fontSize: "8px" }}>
-        {shuffledDeck.map(({ suit, rank }) => (
-          <Card key={`${suit}-${rank}`} suit={suit} rank={rank} />
+        {shuffledDeck.map(({ suit, rank, selected }) => (
+          <Card
+            key={`${suit}-${rank}`}
+            suit={suit}
+            rank={rank}
+            selected={selected}
+          />
         ))}
       </div>
     </div>
