@@ -1,12 +1,12 @@
-import React, { createContext, useContext, useReducer } from "react";
+import React, { createContext, useContext, useReducer } from 'react';
 
-import initialState from "./initialState";
-import reducer from "./reducer";
+import initialState from './initialState';
+import reducer from './reducer';
 import {
   initialiseDispatcher,
   resetDispatcher,
-  drawCardDispatcher
-} from "./actionDispatcher";
+  drawCardDispatcher,
+} from './actionDispatcher';
 
 export const DeckContext = createContext(); // move to diff file
 
@@ -16,7 +16,7 @@ const DeckProvider = ({ children }) => {
   const actions = {
     initialise: initialiseDispatcher(dispatch),
     reset: resetDispatcher(dispatch),
-    drawcard: drawCardDispatcher(dispatch)
+    drawCard: drawCardDispatcher(dispatch),
   };
 
   return (

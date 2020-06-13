@@ -1,25 +1,30 @@
-import React from "react";
-import { useDeck } from "../../contexts/Deck";
+import React from 'react';
+import { useDeck } from '../../contexts/Deck';
 
-import Card from "../Card";
+import Card from '../Card';
 
 const Board = () => {
   const [state, actions] = useDeck();
 
-  const { initialise } = actions;
+  const { initialise, drawCard } = actions;
   const { cards } = state;
 
   const handleStart = e => {
     e.preventDefault();
-    console.log("Initialising....", initialise);
+    console.log('Initialising Board....');
     initialise();
   };
 
-  console.log("State >>>>>>>>>>>", state);
+  const handleDraw = e => {
+    e.preventDefault();
+    drawCard();
+  };
 
   return (
     <>
       <button onClick={handleStart}>Start</button>
+      <button onClick={handleDraw}>Draw</button>
+      <pre>{JSON.stringify(state)}</pre>
       <div>
         {cards.map(({ suit, rank, selected }) => (
           <Card

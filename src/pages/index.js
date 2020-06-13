@@ -8,7 +8,7 @@ const IndexPage = () => {
   return (
     <DeckProvider>
       <div>
-        <h1>Welcome to Nepali Solitaire</h1>
+        <h1>Nepali Solitaire</h1>
         <Board />
       </div>
     </DeckProvider>
