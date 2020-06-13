@@ -5,7 +5,7 @@ import Card from '../Card';
 
 const Board = () => {
   const [cards, setCards] = useState([]);
-  const [state, actions] = useDeck();
+  const [, actions] = useDeck();
 
   const { reset, drawCard } = actions;
 
@@ -34,8 +34,6 @@ const Board = () => {
           />
         ))}
       </div>
-
-      <pre>{JSON.stringify(state.cards, null, 2)}</pre>
     </>
   );
 };

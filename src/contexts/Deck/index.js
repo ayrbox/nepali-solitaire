@@ -20,6 +20,14 @@ const getNewDeck = () => {
   return shuffle(allCards);
 };
 
+const splitDeck = (cards, count) => {
+  const _ = [...cards]; // copy
+  const drawn = take(_, count);
+  const remaining = _.slice(count);
+
+  return [drawn, remaining];
+};
+
 const DeckProvider = ({ children }) => {
   const [cards, setCards] = useState(getNewDeck());
   const [archive, setArchives] = useState([]);
@@ -27,16 +35,12 @@ const DeckProvider = ({ children }) => {
   const reset = () => setCards(getNewDeck());
 
   const drawCard = (count = 1) => {
-    const cardsCopy = [...cards];
+    const [drawn, remaining] = splitDeck(cards, count);
 
-    const drawnCards = take(cardsCopy, count);
+    setArchives([...archive, ...drawn]);
+    setCards(remaining);
 
-    cardsCopy.splice(0, count);
-    setCards(cardsCopy);
-
-    setArchives([...archive, ...drawnCards]);
-
-    return drawnCards;
+    return drawn;
   };
 
   const state = {
