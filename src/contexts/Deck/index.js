@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import shuffle from 'lodash/shuffle';
 import take from 'lodash/take';
 
@@ -32,7 +32,10 @@ const DeckProvider = ({ children }) => {
   const [cards, setCards] = useState(getNewDeck());
   const [archive, setArchives] = useState([]);
 
-  const reset = () => setCards(getNewDeck());
+  const reset = () => {
+    setCards(getNewDeck());
+    setArchives([]);
+  };
 
   const drawCard = (count = 1) => {
     const [drawn, remaining] = splitDeck(cards, count);
@@ -42,6 +45,10 @@ const DeckProvider = ({ children }) => {
 
     return drawn;
   };
+
+  useEffect(() => {
+    console.log(cards, archive);
+  }, [cards, archive]);
 
   const state = {
     cards,
