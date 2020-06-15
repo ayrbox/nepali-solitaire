@@ -26,7 +26,29 @@ const BoardProvider = ({ children }) => {
   const reset = () => setBoard(generateBoard());
 
   const placeCard = ({ key, card }) => {
-    console.log(key, card);
+    setBoard(state => {
+      const { selected, cards } = state[key];
+      return {
+        ...state,
+        [key]: {
+          cards: [...cards, card],
+          selected: selected,
+        },
+      };
+    });
+  };
+
+  const selectBoardItem = ({ key, selectCard = true }) => {
+    setBoard(state => {
+      const { cards } = state[key];
+      return {
+        ...state,
+        [key]: {
+          cards: [...cards],
+          selected: selectCard,
+        },
+      };
+    });
   };
 
   const state = {
@@ -36,6 +58,7 @@ const BoardProvider = ({ children }) => {
   const actions = {
     reset,
     placeCard,
+    selectBoardItem,
   };
 
   return (

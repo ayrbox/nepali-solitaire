@@ -7,7 +7,10 @@ import Card from '../Card';
 const Board = () => {
   const [cards, setCards] = useState([]);
   const [_, { reset, drawCard }] = useDeck();
-  const [{ board }, { reset: resetBoard, placeCard }] = useBoard();
+  const [
+    { board },
+    { reset: resetBoard, placeCard, selectBoardItem },
+  ] = useBoard();
 
   const handleReset = e => {
     e.preventDefault();
@@ -21,9 +24,7 @@ const Board = () => {
     // // on start draw cards for each board item
     // // and place on board
     const boardSize = Object.keys(board).length;
-
     const drawnCards = drawCard(boardSize);
-    // console.log(_.cards, drawnCards);
 
     Object.entries(board).forEach(([key, value], idx) => {
       placeCard({ key, card: drawnCards[idx] });
@@ -35,25 +36,42 @@ const Board = () => {
     setCards(drawCard(1));
   };
 
+  const handleCardClick = key => e => {
+    e.preventDefault();
+    selectBoardItem({
+      key,
+    });
+  };
+
   return (
     <>
       <button onClick={handleStart}>Start</button>
-      <button onClick={handleDraw}>Draw</button>
-      <button onClick={handleReset}>Reset</button>
+      <button onClick={handleDraw} disabled={_.remaining === 0}>
+        Draw
+      </button>
+      <button onClick={handleReset} disabled={_.remaining > 0}>
+        Reset
+      </button>
 
       <pre>{JSON.stringify(_)}</pre>
-      <pre>{JSON.stringify(board, null, 2)}</pre>
 
-      <div>
-        {cards.map(({ suit, rank, selected }) => (
-          <Card
-            key={`${suit}-${rank}`}
-            suit={suit}
-            rank={rank}
-            selected={selected}
-          />
-        ))}
-      </div>
+      {Object.keys(board).map(boardKey => {
+        const { cards, selected } = board[boardKey];
+
+        const { suit, rank } = cards[0] || {
+          suit: 'spade', // allow card to draw empty
+          rank: 'ace',
+        };
+
+        return (
+          <div onClick={handleCardClick(boardKey)} key={`${boardKey}`}>
+            <Card suit={suit} rank={rank} selected={selected} />
+          </div>
+        );
+      })}
+
+      {/* TODO: Draw current state in hidden modal */}
+      <pre>{JSON.stringify(board, null, 2)}</pre>
     </>
   );
 };

@@ -31,6 +31,7 @@ const splitDeck = (cards, count) => {
 const DeckProvider = ({ children }) => {
   const [cards, setCards] = useState(getNewDeck());
   const [archive, setArchives] = useState([]);
+  const [remaining, setRemaining] = useState();
 
   const reset = () => {
     setCards(getNewDeck());
@@ -47,12 +48,13 @@ const DeckProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log(cards, archive);
+    setRemaining(cards.length);
   }, [cards, archive]);
 
   const state = {
     cards,
     archive,
+    remaining,
   };
 
   const actions = {
