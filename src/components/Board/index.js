@@ -5,7 +5,6 @@ import { useBoard } from '../../contexts/BoardContext';
 import Card from '../Card';
 
 const Board = () => {
-  const [cards, setCards] = useState([]);
   const [_, { reset, drawCard }] = useDeck();
   const [
     { board },
@@ -31,11 +30,6 @@ const Board = () => {
     });
   };
 
-  const handleDraw = e => {
-    e.preventDefault();
-    setCards(drawCard(1));
-  };
-
   const handleCardClick = key => e => {
     e.preventDefault();
     selectBoardItem({
@@ -46,14 +40,9 @@ const Board = () => {
   return (
     <>
       <button onClick={handleStart}>Start</button>
-      <button onClick={handleDraw} disabled={_.remaining === 0}>
-        Draw
-      </button>
       <button onClick={handleReset} disabled={_.remaining > 0}>
         Reset
       </button>
-
-      <pre>{JSON.stringify(_)}</pre>
 
       {Object.keys(board).map(boardKey => {
         const { cards, selected } = board[boardKey];
@@ -71,7 +60,9 @@ const Board = () => {
       })}
 
       {/* TODO: Draw current state in hidden modal */}
-      <pre>{JSON.stringify(board, null, 2)}</pre>
+      <pre>BOARD STATE: {JSON.stringify(board, null, 2)}</pre>
+
+      <pre>DECK STATE: {JSON.stringify(_, null, 2)}</pre>
     </>
   );
 };
