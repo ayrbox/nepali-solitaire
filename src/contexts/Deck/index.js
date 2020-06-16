@@ -4,7 +4,7 @@ import take from 'lodash/take';
 
 import { SUITS, RANKS } from '../../constants';
 
-export const DeckContext = createContext(); // move to diff file
+export const DeckContext = createContext();
 
 const getNewDeck = () => {
   const allCards = RANKS.map(({ name: rank, value }) => {
@@ -16,8 +16,11 @@ const getNewDeck = () => {
   }).reduce((deckCards, suitCards) => {
     return [...deckCards, ...suitCards];
   }, []);
-
-  return shuffle(allCards);
+  // return shuffle(allCards);
+  // Make game easy
+  const a = [...allCards].splice(0, 40);
+  const b = [...allCards].splice(40);
+  return [...shuffle(a), ...b];
 };
 
 const splitDeck = (cards, count) => {

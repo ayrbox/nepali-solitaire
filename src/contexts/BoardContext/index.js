@@ -16,24 +16,21 @@ const BoardProvider = ({ children }) => {
       return {
         ...state,
         [key]: {
-          cards: [...cards, card],
+          cards: [card, ...cards], // unshifting card position
         },
       };
     });
   };
 
-  // const selectBoardItem = ({ key, selectCard = true }) => {
-  //   setBoard(state => {
-  //     const { cards } = state[key];
-  //     return {
-  //       ...state,
-  //       [key]: {
-  //         cards: [...cards],
-  //         selected: selectCard,
-  //       },
-  //     };
-  //   });
-  // };
+  const checkGame = (first, second) => {
+    const { cards: firstStack } = board[first];
+    const { cards: secondStack } = board[second];
+
+    const _1 = firstStack[0];
+    const _2 = secondStack[0];
+
+    return _1.value + _2.value === 11;
+  };
 
   const state = {
     board,
@@ -42,6 +39,7 @@ const BoardProvider = ({ children }) => {
   const actions = {
     reset,
     placeCard,
+    checkGame,
   };
 
   return (
