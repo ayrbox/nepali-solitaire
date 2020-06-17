@@ -1,6 +1,6 @@
 {
   "name": "nepali-solitaire",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "repository": "git@github.com:ayrbox/nepali-solitaire.git",
   "author": "ayrbox <srdx7@hotmail.com>",
