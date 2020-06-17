@@ -1,6 +1,6 @@
 {
   "name": "nepali-solitaire",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "repository": "git@github.com:ayrbox/nepali-solitaire.git",
   "author": "ayrbox <srdx7@hotmail.com>",
@@ -15,6 +15,10 @@
     "react-dom": "^16.13.1"
   },
   "scripts": {
-    "dev": "gatsby develop"
+    "dev": "gatsby develop",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.0.0"
   }
 }
