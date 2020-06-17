@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import clsx from 'clsx';
 import uniq from 'lodash/uniq';
 
 import { useDeck } from '../../contexts/Deck';
 import { useBoard } from '../../contexts/BoardContext';
 
-import Card from '../Card';
 import Position from '../Position';
+
+import styles from './board.module.scss';
 
 const Board = () => {
   const [selectedItems, setSelectedItems] = useState([]);
 
-  const [_, { reset, drawCard }] = useDeck();
-  const [{ board }, { reset: resetBoard, placeCard, checkGame }] = useBoard();
-
-  const handleReset = e => {
-    e.preventDefault();
-    reset(); // reset card deck
-    resetBoard(); // reset board
-  };
+  const [_, { reset: resetDeck, drawCard }] = useDeck();
+  const [{ board }, { placeCard, checkGame }] = useBoard();
 
   useEffect(() => {
     if (selectedItems.length === 2) {
@@ -32,20 +28,18 @@ const Board = () => {
       }
       setSelectedItems([]);
     }
-  }, [selectedItems]);
+  }, [selectedItems]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const handleStart = e => {
-    e.preventDefault();
+  useEffect(() => {
+    resetDeck();
 
-    // // on start draw cards for each board item
-    // // and place on board
     const boardSize = Object.keys(board).length;
     const drawnCards = drawCard(boardSize);
 
     Object.entries(board).forEach(([key, value], idx) => {
       placeCard({ key, card: drawnCards[idx] });
     });
-  };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleCardSelect = key => e => {
     e.preventDefault();
@@ -58,43 +52,45 @@ const Board = () => {
 
   return (
     <div className="container-fluid">
-      <div className="row">
-        <div className="col">
-          <button onClick={handleStart}>Start</button>
-          <button onClick={handleReset} disabled={_.remaining > 0}>
-            Reset
-          </button>
+      <div
+        className={clsx('row', {
+          'd-none': _.remaining > 0,
+        })}
+      >
+        <div className="col text-center">
+          <h1 className="display-1">
+            You are lucky today! <br />
+            <small>&nbsp;</small>
+          </h1>
         </div>
       </div>
       <div className="row">
-        <div className="col-8">
-          {Object.keys(board).map(boardKey => {
-            const { cards } = board[boardKey];
-
-            const { suit, rank } = cards[0] || {
-              suit: 'spade', // allow card to draw empty
-              rank: 'ace',
-            };
-
-            const isSelected = selectedItems.includes(boardKey);
-
-            // TODO: make this div a placer holder
-            // It can have empty state (no cards)
-            // display all cards stack
-            // isSelected should be place holder not card
-            console.log('cards', cards);
-            return (
-              <Position
-                key={`${boardKey}`}
-                cards={cards}
-                onClick={handleCardSelect(boardKey)}
-                selected={isSelected}
-              />
-            );
-          })}
+        <div
+          className="col-12"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <div className={styles.boardWrapper} style={{ fontSize: '12px' }}>
+            {Object.keys(board).map(boardKey => {
+              const { cards } = board[boardKey];
+              const isSelected = selectedItems.includes(boardKey);
+              return (
+                <Position
+                  key={`${boardKey}`}
+                  cards={cards}
+                  onClick={handleCardSelect(boardKey)}
+                  selected={isSelected}
+                />
+              );
+            })}
+          </div>
         </div>
-
-        <div className="col-4" style={{ backgroundColor: '#fff' }}>
+      </div>
+      <div className="row d-none">
+        <div className="col-6" style={{ backgroundColor: '#fff' }}>
           <pre>
             SELECTED CARD POSITIONS: {JSON.stringify(selectedItems, null, 4)}
           </pre>
@@ -104,9 +100,7 @@ const Board = () => {
             DECK STATE: {JSON.stringify(_, null, 2)}
           </pre>
         </div>
-      </div>
-      <div className="row">
-        <div className="col" style={{ backgroundColor: '#fff' }}>
+        <div className="col-6" style={{ backgroundColor: '#fff' }}>
           <pre>BOARD STATE: {JSON.stringify(board, null, 2)}</pre>
         </div>
       </div>

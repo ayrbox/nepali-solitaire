@@ -1,12 +1,11 @@
 import React from 'react';
 import clsx from 'clsx';
 import Card from '../Card';
-import reverse from 'lodash/reverse';
 
 import styles from './position.module.scss';
 
 const Position = ({ cards, onClick, selected }) => {
-  const isEmpty = true; //!cards.length;
+  const isEmpty = !cards.length;
 
   const positionClass = clsx(styles.position, {
     [styles.empty]: isEmpty,
@@ -16,9 +15,18 @@ const Position = ({ cards, onClick, selected }) => {
   const reversed = [...cards].reverse();
 
   return (
-    <div className={positionClass} onClick={onClick}>
+    <div
+      className={positionClass}
+      onClick={onClick}
+      onKeyPress={onClick}
+      role="button"
+      tabIndex={0}
+    >
       {reversed.map(card => (
-        <div className={styles.cardWrapper}>
+        <div
+          key={`card-${card.suit}-${card.rank}`}
+          className={styles.cardWrapper}
+        >
           <Card suit={card.suit} rank={card.rank} selected={false} />
         </div>
       ))}

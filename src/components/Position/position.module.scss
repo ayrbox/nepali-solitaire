@@ -1,8 +1,8 @@
 @import '../../sass/utils';
 
-$border-size: 3;
+$border-size: 4;
 $empty-border-color: rgba(255, 255, 255, 0.5);
-$selected-border-color: blue;
+$selected-border-color: #4eecae;
 
 .position {
   border: cardem($border-size) dashed transparent;
@@ -19,6 +19,7 @@ $selected-border-color: blue;
 
   &.selected {
     border-color: $selected-border-color;
+    opacity: 0.8;
   }
 
   .cardWrapper:not(:first-child) {

@@ -9,10 +9,7 @@ const IndexPage = () => {
   return (
     <BoardProvider>
       <DeckProvider>
-        <div>
-          <h1>Nepali Solitaire</h1>
-          <Board />
-        </div>
+        <Board />
       </DeckProvider>
     </BoardProvider>
   );
