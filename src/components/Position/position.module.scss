@@ -1,0 +1,27 @@
+@import '../../sass/utils';
+
+$border-size: 3;
+$empty-border-color: rgba(255, 255, 255, 0.5);
+$selected-border-color: blue;
+
+.position {
+  border: cardem($border-size) dashed transparent;
+  border-radius: cardem(10);
+  min-width: cardem(200 + ($border-size * 2)); //TODO: use variable for width
+  min-height: cardem(280 + ($border-size * 2));
+  margin: 0 15px 15px 0;
+  position: relative;
+  z-index: 2;
+
+  &.empty {
+    border-color: $empty-border-color;
+  }
+
+  &.selected {
+    border-color: $selected-border-color;
+  }
+
+  .cardWrapper:not(:first-child) {
+    margin-top: cardem(280) * -1;
+  }
+}

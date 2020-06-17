@@ -5,6 +5,7 @@ import { useDeck } from '../../contexts/Deck';
 import { useBoard } from '../../contexts/BoardContext';
 
 import Card from '../Card';
+import Position from '../Position';
 
 const Board = () => {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -81,14 +82,14 @@ const Board = () => {
             // It can have empty state (no cards)
             // display all cards stack
             // isSelected should be place holder not card
+            console.log('cards', cards);
             return (
-              <div
-                onClick={handleCardSelect(boardKey)}
+              <Position
                 key={`${boardKey}`}
-                style={{ fontSize: '14px' }}
-              >
-                <Card suit={suit} rank={rank} selected={isSelected} />
-              </div>
+                cards={cards}
+                onClick={handleCardSelect(boardKey)}
+                selected={isSelected}
+              />
             );
           })}
         </div>
