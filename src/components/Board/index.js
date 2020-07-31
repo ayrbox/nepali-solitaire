@@ -4,6 +4,7 @@ import uniq from 'lodash/uniq';
 
 import { useDeck } from '../../contexts/Deck';
 import { useBoard } from '../../contexts/BoardContext';
+import Timer from '../Timer';
 
 import Position from '../Position';
 
@@ -64,6 +65,7 @@ const Board = () => {
           </h1>
         </div>
       </div>
+      <Timer stop={_.remaining === 0} />
       <div className="row">
         <div
           className="col-12"
