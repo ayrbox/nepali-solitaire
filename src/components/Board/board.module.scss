@@ -5,11 +5,7 @@ $row-height: 320;
 
 .boardWrapper {
   display: inline-grid;
-  grid-template-columns:
-    cardem($column-width) cardem($column-width) cardem($column-width)
-    cardem($column-width);
-  grid-template-rows: cardem($row-height) cardem($row-height) cardem(
-      $row-height
-    );
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, cardem($row-height));
   grid-gap: cardem(20);
 }
