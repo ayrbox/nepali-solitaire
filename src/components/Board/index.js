@@ -52,7 +52,7 @@ const Board = () => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className={styles.boardContainer}>
       <div
         className={clsx('row', {
           'd-none': _.remaining > 0,
@@ -66,44 +66,26 @@ const Board = () => {
         </div>
       </div>
       <Timer stop={_.remaining === 0} />
-      <div className="row">
-        <div
-          className="col-12"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <div className={styles.boardWrapper} style={{ fontSize: '12px' }}>
-            {Object.keys(board).map(boardKey => {
-              const { cards } = board[boardKey];
-              const isSelected = selectedItems.includes(boardKey);
-              return (
-                <Position
-                  key={`${boardKey}`}
-                  cards={cards}
-                  onClick={handleCardSelect(boardKey)}
-                  selected={isSelected}
-                />
-              );
-            })}
-          </div>
-        </div>
-      </div>
-      <div className="row d-none">
-        <div className="col-6" style={{ backgroundColor: '#fff' }}>
-          <pre>
-            SELECTED CARD POSITIONS: {JSON.stringify(selectedItems, null, 4)}
-          </pre>
-
-          {/* TODO: Draw current state in hidden modal */}
-          <pre style={{ maxHeight: '500px' }}>
-            DECK STATE: {JSON.stringify(_, null, 2)}
-          </pre>
-        </div>
-        <div className="col-6" style={{ backgroundColor: '#fff' }}>
-          <pre>BOARD STATE: {JSON.stringify(board, null, 2)}</pre>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <div className={styles.boardWrapper} style={{ fontSize: '12.5px' }}>
+          {Object.keys(board).map(boardKey => {
+            const { cards } = board[boardKey];
+            const isSelected = selectedItems.includes(boardKey);
+            return (
+              <Position
+                key={`${boardKey}`}
+                cards={cards}
+                onClick={handleCardSelect(boardKey)}
+                selected={isSelected}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

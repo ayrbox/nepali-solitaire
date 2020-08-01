@@ -3,6 +3,11 @@
 $column-width: 200;
 $row-height: 320;
 
+.boardContainer {
+  width: 100vw;
+  height: 100vh;
+}
+
 .boardWrapper {
   display: inline-grid;
   grid-template-columns: repeat(4, 1fr);

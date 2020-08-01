@@ -1,7 +1,7 @@
 $suit-size: 5.8em; /* TODO: move to _variables */
 
 @function cardem($value) {
-  @return ($value / 200 * 16) * 1em;
+  @return (($value / 200) * 16) * 1em;
 }
 
 @function suitem($value) {

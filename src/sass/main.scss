@@ -1,5 +1,15 @@
+@font-face {
+  font-family: 'Suit-Regular';
+  src: url('../fonts/suit-regular.eot');
+  src: url('../fonts/suit-regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/suit-regular.woff') format('woff'),
+    url('../fonts/suit-regular.ttf') format('truetype'),
+    url('../fonts/suit-regular.svg#suit-regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   background-color: #023835;
   color: #fff;
-  // background-image: url("./images/face-jack-heart.png");
 }

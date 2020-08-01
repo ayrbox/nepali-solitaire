@@ -36,7 +36,7 @@ const Timer = ({ stop }) => {
     } else {
       clearInterval(timerHandler);
     }
-  }, [stop]);
+  }, [stop, timerHandler]);
 
   return (
     <h1>
