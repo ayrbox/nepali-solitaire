@@ -22,21 +22,22 @@ const Timer = ({ stop }) => {
     sec: 0,
   });
 
-  const [timerHandler, setTimerHandler] = useState(null);
-
   const { min, sec } = time;
 
   useEffect(() => {
+    let timerHandler;
     if (!stop) {
-      setTimerHandler(() =>
-        setInterval(() => {
-          setTime(prev => calculateTime(prev));
-        }, 1000)
-      );
+      timerHandler = setInterval(() => {
+        setTime(prev => calculateTime(prev));
+      }, 1000);
     } else {
       clearInterval(timerHandler);
     }
-  }, [stop, timerHandler]);
+
+    return () => {
+      clearInterval(timerHandler);
+    };
+  }, [stop]);
 
   return (
     <h1>
