@@ -1,7 +1,7 @@
 @import '../../sass/utils';
 
 .card-suit {
-  font-size: suitem(400);
+  font-size: $suit-size;
   font-weight: normal;
   width: suitem(50);
   height: suitem(57);
@@ -14,7 +14,7 @@
 
 .middleCenterLarge {
   @extend .card-suit;
-  font-size: suitem(800);
+  font-size: cardem(128);
   left: suitem(33);
   top: suitem(43);
 }
