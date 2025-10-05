@@ -2,7 +2,7 @@ import React from "react";
 import CardBase from "../CardBase";
 import { SuitName, SUIT } from "../../lib/constants";
 
-import cardsStyles from "./cards.module.scss";
+import { cardPositions } from "./cardPositions";
 
 interface NineProps {
   suit: SuitName;
@@ -14,39 +14,39 @@ const Nine: React.FC<NineProps> = ({ suit, selected }) => {
   return (
     <CardBase suit={suit} rank="nine" selected={selected}>
       <span
-        className={cardsStyles.topLeft}
+        className={cardPositions.topLeft}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
-        className={cardsStyles.topRight}
+        className={cardPositions.topRight}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
-        className={cardsStyles.middleTopLeft}
+        className={cardPositions.middleTopLeft}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
-        className={cardsStyles.middleTopRight}
+        className={cardPositions.middleTopRight}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
-        className={cardsStyles.middleBottomLeft}
+        className={cardPositions.middleBottomLeft}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
-        className={cardsStyles.middleCenter}
+        className={cardPositions.middleCenter}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
-        className={cardsStyles.middleBottomRight}
+        className={cardPositions.middleBottomRight}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
-        className={cardsStyles.bottomLeft}
+        className={cardPositions.bottomLeft}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
-        className={cardsStyles.bottomRight}
+        className={cardPositions.bottomRight}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
     </CardBase>

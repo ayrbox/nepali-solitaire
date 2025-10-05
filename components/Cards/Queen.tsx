@@ -3,7 +3,7 @@ import { StaticImageData } from "next/image";
 import CardBase from "../CardBase";
 import { SuitName } from "../../lib/constants";
 
-import cardsStyles from "./cards.module.scss";
+import { cardPositions } from "./cardPositions";
 import spadeFace from "./images/face-queen-spade.png";
 import heartFace from "./images/face-queen-heart.png";
 import diamondFace from "./images/face-queen-diamond.png";
@@ -28,7 +28,7 @@ const Queen: React.FC<QueenProps> = ({ suit, selected }) => {
       <span>
         <img
           src={faceImg.src}
-          className={cardsStyles.faceCard}
+          className={cardPositions.faceCard}
           alt={`Queen of ${suit}`}
         />
       </span>

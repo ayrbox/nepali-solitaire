@@ -2,7 +2,7 @@ import React from "react";
 import CardBase from "../CardBase";
 import { SuitName, SUIT } from "../../lib/constants";
 
-import cardsStyles from "./cards.module.scss";
+import { cardPositions } from "./cardPositions";
 
 interface SevenProps {
   suit: SuitName;
@@ -14,31 +14,31 @@ const Seven: React.FC<SevenProps> = ({ suit, selected }) => {
   return (
     <CardBase suit={suit} rank="seven" selected={selected}>
       <span
-        className={cardsStyles.topLeft}
+        className={cardPositions.topLeft}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
-        className={cardsStyles.topRight}
+        className={cardPositions.topRight}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
-        className={cardsStyles.middleLeft}
+        className={cardPositions.middleLeft}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
-        className={cardsStyles.middleTop}
+        className={cardPositions.middleTop}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
-        className={cardsStyles.middleRight}
+        className={cardPositions.middleRight}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
-        className={cardsStyles.bottomLeft}
+        className={cardPositions.bottomLeft}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
-        className={cardsStyles.bottomRight}
+        className={cardPositions.bottomRight}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
     </CardBase>

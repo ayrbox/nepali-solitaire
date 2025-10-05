@@ -2,8 +2,8 @@ import React from "react";
 import CardBase from "../CardBase";
 import { SuitName } from "../../lib/constants";
 import { StaticImageData } from "next/image";
+import { cardPositions } from "./cardPositions";
 
-import cardsStyles from "./cards.module.scss";
 import spadeFace from "./images/face-jack-spade.png";
 import heartFace from "./images/face-jack-heart.png";
 import diamondFace from "./images/face-jack-diamond.png";
@@ -28,7 +28,7 @@ const Jack: React.FC<JackProps> = ({ suit, selected }) => {
       <span>
         <img
           src={faceImg.src}
-          className={cardsStyles.faceCard}
+          className={cardPositions.faceCard}
           alt={`Jack of ${suit}`}
         />
       </span>

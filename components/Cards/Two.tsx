@@ -1,8 +1,7 @@
 import React from "react";
 import CardBase from "../CardBase";
 import { SuitName, SUIT } from "../../lib/constants";
-
-import cardsStyles from "./cards.module.scss";
+import { cardPositions } from "./cardPositions";
 
 interface TwoProps {
   suit: SuitName;
@@ -14,11 +13,11 @@ const Two: React.FC<TwoProps> = ({ suit, selected }) => {
   return (
     <CardBase suit={suit} rank="two" selected={selected}>
       <span
-        className={cardsStyles.topCenter}
+        className={cardPositions.topCenter}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
-        className={cardsStyles.bottomCenter}
+        className={cardPositions.bottomCenter}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
     </CardBase>

@@ -10,8 +10,6 @@ import Timer from '../Timer';
 
 import Position from '../Position';
 
-import styles from './board.module.scss';
-
 const Board: React.FC = () => {
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
 
@@ -54,28 +52,22 @@ const Board: React.FC = () => {
   };
 
   return (
-    <div className={styles.boardContainer}>
+    <div className="w-screen h-screen">
       <div
-        className={clsx('row', {
-          'd-none': deckState.remaining > 0,
+        className={clsx('flex flex-wrap -mx-4', {
+          'hidden': deckState.remaining > 0,
         })}
       >
-        <div className="col text-center">
-          <h1 className="display-1">
+        <div className="flex-1 px-4 text-center">
+          <h1 className="text-8xl font-light leading-tight">
             You are lucky today! <br />
             <small>&nbsp;</small>
           </h1>
         </div>
       </div>
       <Timer stop={deckState.remaining === 0} />
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <div className={styles.boardWrapper} style={{ fontSize: '12.5px' }}>
+      <div className="flex items-center justify-center">
+        <div className="inline-grid grid-cols-4 grid-rows-3 gap-5 text-[12.5px]">
           {Object.keys(board).map((boardKey) => {
             const { cards } = board[boardKey];
             const isSelected = selectedItems.includes(boardKey);

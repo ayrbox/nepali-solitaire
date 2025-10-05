@@ -3,7 +3,7 @@ import { StaticImageData } from "next/image";
 import CardBase from "../CardBase";
 import { SuitName } from "../../lib/constants";
 
-import cardsStyles from "./cards.module.scss";
+import { cardPositions } from "./cardPositions";
 import spadeFace from "./images/face-king-spade.png";
 import heartFace from "./images/face-king-heart.png";
 import diamondFace from "./images/face-king-diamond.png";
@@ -28,7 +28,7 @@ const King: React.FC<KingProps> = ({ suit, selected }) => {
       <span>
         <img
           src={faceImg.src}
-          className={cardsStyles.faceCard}
+          className={cardPositions.faceCard}
           alt={`King of ${suit}`}
         />
       </span>

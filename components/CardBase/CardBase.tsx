@@ -1,6 +1,5 @@
 import React from "react";
 import clsx from "clsx";
-import cardStyles from "./cardbase.module.scss";
 
 import { RANK, SUIT, RankName, SuitName } from "../../lib/constants";
 
@@ -17,19 +16,22 @@ const CardBase: React.FC<CardBaseProps> = ({ children, rank, suit, selected }) =
 
   return (
     <div
-      className={clsx(cardStyles.card, {
-        [cardStyles.cardSelected]: selected
-      })}
+      className={clsx(
+        "bg-white font-sans rounded-[10px] shadow-[0_0_5px_rgba(0,0,0,0.5)] w-[200px] h-[280px] mr-[15px] mb-[15px] border border-solid relative z-[2]",
+        {
+          "opacity-70": selected
+        }
+      )}
       style={{ color }}
     >
-      <div className={cardStyles.cardCornerTop}>
-        <span className={cardStyles.number}>{rankSymbol}</span>
-        <span dangerouslySetInnerHTML={{ __html: suitSymbol }} />
+      <div className="leading-none absolute text-center left-2 top-3">
+        <span className="block text-2xl font-bold leading-3 h-3">{rankSymbol}</span>
+        <span className="block text-2xl font-bold" dangerouslySetInnerHTML={{ __html: suitSymbol }} />
       </div>
       {children}
-      <div className={cardStyles.cardCornerBottom}>
-        <span className={cardStyles.number}>{rankSymbol}</span>
-        <span dangerouslySetInnerHTML={{ __html: suitSymbol }} />
+      <div className="leading-none absolute text-center bottom-3 right-2 rotate-180">
+        <span className="block text-2xl font-bold leading-3 h-3">{rankSymbol}</span>
+        <span className="block text-2xl font-bold" dangerouslySetInnerHTML={{ __html: suitSymbol }} />
       </div>
     </div>
   );

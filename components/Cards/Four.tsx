@@ -2,7 +2,7 @@ import React from "react";
 import CardBase from "../CardBase";
 import { SuitName, SUIT } from "../../lib/constants";
 
-import cardsStyles from "./cards.module.scss";
+import { cardPositions } from "./cardPositions";
 
 interface FourProps {
   suit: SuitName;
@@ -14,20 +14,20 @@ const Four: React.FC<FourProps> = ({ suit, selected }) => {
   return (
     <CardBase suit={suit} rank="four" selected={selected}>
       <span
-        className={cardsStyles.topLeft}
+        className={cardPositions.topLeft}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
 
       <span
-        className={cardsStyles.topRight}
+        className={cardPositions.topRight}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
-        className={cardsStyles.bottomLeft}
+        className={cardPositions.bottomLeft}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
-        className={cardsStyles.bottomRight}
+        className={cardPositions.bottomRight}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
     </CardBase>
