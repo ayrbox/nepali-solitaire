@@ -1,3 +1,9 @@
+export interface SuitType {
+  name: string;
+  symbol: string;
+  color: string;
+}
+
 export const SUIT = {
   club: {
     name: "club",
@@ -19,9 +25,15 @@ export const SUIT = {
     symbol: "&hearts;",
     color: "#df0000"
   }
-};
+} as const;
 
 export const SUITS = [SUIT.club, SUIT.diamond, SUIT.spade, SUIT.heart];
+
+export interface RankType {
+  name: string;
+  symbol: string;
+  value: number;
+}
 
 export const RANK = {
   ace: {
@@ -89,7 +101,7 @@ export const RANK = {
     symbol: "K",
     value: -1
   }
-};
+} as const;
 
 export const RANKS = [
   RANK.ace,
@@ -106,3 +118,12 @@ export const RANKS = [
   RANK.queen,
   RANK.king
 ];
+
+export type SuitName = keyof typeof SUIT;
+export type RankName = keyof typeof RANK;
+
+export interface CardType {
+  suit: SuitName;
+  rank: RankName;
+  value: number;
+}

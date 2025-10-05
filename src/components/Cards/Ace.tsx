@@ -1,10 +1,15 @@
 import React from "react";
 import CardBase from "../CardBase";
+import { SuitName, SUIT } from "../../constants";
 
 import cardsStyles from "./cards.module.scss";
-import { SUIT } from "../../constants";
 
-const Ace = ({ suit, selected }) => {
+interface AceProps {
+  suit: SuitName;
+  selected: boolean;
+}
+
+const Ace: React.FC<AceProps> = ({ suit, selected }) => {
   const { symbol } = SUIT[suit];
   return (
     <CardBase suit={suit} rank="ace" selected={selected}>

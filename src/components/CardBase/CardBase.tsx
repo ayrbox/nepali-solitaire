@@ -2,9 +2,16 @@ import React from "react";
 import clsx from "clsx";
 import cardStyles from "./cardbase.module.scss";
 
-import { RANK, SUIT } from "../../constants";
+import { RANK, SUIT, RankName, SuitName } from "../../constants";
 
-const Card = ({ children, rank, suit, selected }) => {
+interface CardBaseProps {
+  children?: React.ReactNode;
+  rank: RankName;
+  suit: SuitName;
+  selected: boolean;
+}
+
+const CardBase: React.FC<CardBaseProps> = ({ children, rank, suit, selected }) => {
   const { symbol: suitSymbol, color } = SUIT[suit];
   const { symbol: rankSymbol } = RANK[rank];
 
@@ -28,4 +35,4 @@ const Card = ({ children, rank, suit, selected }) => {
   );
 };
 
-export default Card;
+export default CardBase;

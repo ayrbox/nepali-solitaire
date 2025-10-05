@@ -1,13 +1,18 @@
 import React from "react";
 import CardBase from "../CardBase";
+import { SuitName, SUIT } from "../../constants";
 
 import cardsStyles from "./cards.module.scss";
-import { SUIT } from "../../constants";
 
-const Ace = ({ suit, selected }) => {
+interface EightProps {
+  suit: SuitName;
+  selected: boolean;
+}
+
+const Eight: React.FC<EightProps> = ({ suit, selected }) => {
   const { symbol } = SUIT[suit];
   return (
-    <CardBase suit={suit} rank="ten" selected={selected}>
+    <CardBase suit={suit} rank="eight" selected={selected}>
       <span
         className={cardsStyles.topLeft}
         dangerouslySetInnerHTML={{ __html: symbol }}
@@ -17,28 +22,20 @@ const Ace = ({ suit, selected }) => {
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
-        className={cardsStyles.middleTopLeft}
+        className={cardsStyles.middleLeft}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
-        className={cardsStyles.middleTopRight}
-        dangerouslySetInnerHTML={{ __html: symbol }}
-      />
-      <span
-        className={cardsStyles.middleBottomLeft}
-        dangerouslySetInnerHTML={{ __html: symbol }}
-      />
-      <span
-        className={cardsStyles.middleTopCenter}
+        className={cardsStyles.middleTop}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
 
       <span
-        className={cardsStyles.middleBottomCenter}
+        className={cardsStyles.middleBottom}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
-        className={cardsStyles.middleBottomRight}
+        className={cardsStyles.middleRight}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
@@ -53,4 +50,4 @@ const Ace = ({ suit, selected }) => {
   );
 };
 
-export default Ace;
+export default Eight;

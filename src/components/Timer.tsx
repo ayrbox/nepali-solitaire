@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-const calculateTime = ({ min, sec }) => {
+interface TimeState {
+  min: number;
+  sec: number;
+}
+
+const calculateTime = ({ min, sec }: TimeState): TimeState => {
   if (sec + 1 === 60) {
     return {
       min: min + 1,
@@ -14,10 +19,14 @@ const calculateTime = ({ min, sec }) => {
   }
 };
 
-const padNumber = (num, padLength = 2) => `${num}`.padStart(padLength, '0');
+const padNumber = (num: number, padLength: number = 2): string => `${num}`.padStart(padLength, '0');
 
-const Timer = ({ stop }) => {
-  const [time, setTime] = useState({
+interface TimerProps {
+  stop: boolean;
+}
+
+const Timer: React.FC<TimerProps> = ({ stop }) => {
+  const [time, setTime] = useState<TimeState>({
     min: 0,
     sec: 0,
   });
@@ -25,7 +34,7 @@ const Timer = ({ stop }) => {
   const { min, sec } = time;
 
   useEffect(() => {
-    let timerHandler;
+    let timerHandler: NodeJS.Timeout;
     if (!stop) {
       timerHandler = setInterval(() => {
         setTime(prev => calculateTime(prev));

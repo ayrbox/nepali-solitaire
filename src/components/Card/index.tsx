@@ -14,8 +14,8 @@ import {
   Queen,
   King
 } from "../Cards";
+import { RankName, SuitName } from "../../constants";
 
-// TODO: card rank maping could have been automatic
 const CARD_MAPPING = {
   ace: Ace,
   two: Two,
@@ -30,9 +30,15 @@ const CARD_MAPPING = {
   jack: Jack,
   queen: Queen,
   king: King
-};
+} as const;
 
-const Card = ({ rank, suit, selected }) => {
+interface CardProps {
+  rank: RankName;
+  suit: SuitName;
+  selected: boolean;
+}
+
+const Card: React.FC<CardProps> = ({ rank, suit, selected }) => {
   const CardToRender = CARD_MAPPING[rank];
   return <CardToRender suit={suit} selected={selected} />;
 };

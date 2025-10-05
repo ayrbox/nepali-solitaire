@@ -10,10 +10,10 @@ import Position from '../Position';
 
 import styles from './board.module.scss';
 
-const Board = () => {
-  const [selectedItems, setSelectedItems] = useState([]);
+const Board: React.FC = () => {
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
 
-  const [_, { reset: resetDeck, drawCard }] = useDeck();
+  const [deckState, { reset: resetDeck, drawCard }] = useDeck();
   const [{ board }, { placeCard, checkGame }] = useBoard();
 
   useEffect(() => {
@@ -21,7 +21,6 @@ const Board = () => {
       const [key1, key2] = selectedItems;
 
       if (checkGame(key1, key2)) {
-        // drawing new cards from check
         const [card1, card2] = drawCard(2);
 
         placeCard({ key: key1, card: card1 });
@@ -29,7 +28,7 @@ const Board = () => {
       }
       setSelectedItems([]);
     }
-  }, [selectedItems]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [selectedItems, checkGame, drawCard, placeCard]);
 
   useEffect(() => {
     resetDeck();
@@ -37,12 +36,12 @@ const Board = () => {
     const boardSize = Object.keys(board).length;
     const drawnCards = drawCard(boardSize);
 
-    Object.entries(board).forEach(([key, value], idx) => {
+    Object.entries(board).forEach(([key], idx) => {
       placeCard({ key, card: drawnCards[idx] });
     });
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [resetDeck, board, drawCard, placeCard]);
 
-  const handleCardSelect = key => e => {
+  const handleCardSelect = (key: string) => (e: React.MouseEvent) => {
     e.preventDefault();
     if (selectedItems.includes(key)) {
       setSelectedItems(prev => prev.filter(k => key !== k));
@@ -55,7 +54,7 @@ const Board = () => {
     <div className={styles.boardContainer}>
       <div
         className={clsx('row', {
-          'd-none': _.remaining > 0,
+          'd-none': deckState.remaining > 0,
         })}
       >
         <div className="col text-center">
@@ -65,7 +64,7 @@ const Board = () => {
           </h1>
         </div>
       </div>
-      <Timer stop={_.remaining === 0} />
+      <Timer stop={deckState.remaining === 0} />
       <div
         style={{
           display: 'flex',

@@ -1,17 +1,29 @@
 import React from "react";
 import CardBase from "../CardBase";
+import { SuitName, SUIT } from "../../constants";
 
 import cardsStyles from "./cards.module.scss";
-import { SUIT } from "../../constants";
 
-const Two = ({ suit, selected }) => {
+interface ThreeProps {
+  suit: SuitName;
+  selected: boolean;
+}
+
+const Three: React.FC<ThreeProps> = ({ suit, selected }) => {
   const { symbol } = SUIT[suit];
+
   return (
-    <CardBase suit={suit} rank="two" selected={selected}>
+    <CardBase suit={suit} rank="three" selected={selected}>
       <span
         className={cardsStyles.topCenter}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
+
+      <span
+        className={cardsStyles.middleCenter}
+        dangerouslySetInnerHTML={{ __html: symbol }}
+      />
+
       <span
         className={cardsStyles.bottomCenter}
         dangerouslySetInnerHTML={{ __html: symbol }}
@@ -20,4 +32,4 @@ const Two = ({ suit, selected }) => {
   );
 };
 
-export default Two;
+export default Three;

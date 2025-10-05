@@ -1,27 +1,25 @@
 import React from "react";
 import CardBase from "../CardBase";
+import { SuitName, SUIT } from "../../constants";
 
 import cardsStyles from "./cards.module.scss";
-import { SUIT } from "../../constants";
 
-const Ace = ({ suit, selected }) => {
+interface FourProps {
+  suit: SuitName;
+  selected: boolean;
+}
+
+const Four: React.FC<FourProps> = ({ suit, selected }) => {
   const { symbol } = SUIT[suit];
   return (
-    <CardBase suit={suit} rank="six" selected={selected}>
+    <CardBase suit={suit} rank="four" selected={selected}>
       <span
         className={cardsStyles.topLeft}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
+
       <span
         className={cardsStyles.topRight}
-        dangerouslySetInnerHTML={{ __html: symbol }}
-      />
-      <span
-        className={cardsStyles.middleLeft}
-        dangerouslySetInnerHTML={{ __html: symbol }}
-      />
-      <span
-        className={cardsStyles.middleRight}
         dangerouslySetInnerHTML={{ __html: symbol }}
       />
       <span
@@ -36,4 +34,4 @@ const Ace = ({ suit, selected }) => {
   );
 };
 
-export default Ace;
+export default Four;

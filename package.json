@@ -19,6 +19,10 @@
     "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "devDependencies": {
-    "gh-pages": "^3.0.0"
+    "gh-pages": "^3.0.0",
+    "typescript": "^4.9.5",
+    "@types/react": "^16.14.34",
+    "@types/react-dom": "^16.9.19",
+    "@types/node": "^18.15.13"
   }
 }

@@ -1,10 +1,17 @@
 import React from 'react';
 import clsx from 'clsx';
 import Card from '../Card';
+import { CardType } from '../../constants';
 
 import styles from './position.module.scss';
 
-const Position = ({ cards, onClick, selected }) => {
+interface PositionProps {
+  cards: CardType[];
+  onClick: () => void;
+  selected: boolean;
+}
+
+const Position: React.FC<PositionProps> = ({ cards, onClick, selected }) => {
   const isEmpty = !cards.length;
 
   const positionClass = clsx(styles.position, {
@@ -18,11 +25,11 @@ const Position = ({ cards, onClick, selected }) => {
     <div
       className={positionClass}
       onClick={onClick}
-      onKeyPress={onClick}
+      onKeyUp={onClick}
       role="button"
       tabIndex={0}
     >
-      {reversed.map(card => (
+      {reversed.map((card) => (
         <div
           key={`card-${card.suit}-${card.rank}`}
           className={styles.cardWrapper}
