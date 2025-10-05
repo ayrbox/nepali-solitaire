@@ -1,0 +1,27 @@
+
+$border-size: 4;
+$empty-border-color: rgba(255, 255, 255, 0.5);
+$selected-border-color: #4eecae;
+
+.position {
+  border: 4px dashed transparent;
+  border-radius: 10px;
+  min-width: 208px; //TODO: use variable for width
+  min-height: 288px;
+  margin: 0 15px 15px 0;
+  position: relative;
+  z-index: 2;
+
+  &.empty {
+    border-color: $empty-border-color;
+  }
+
+  &.selected {
+    border-color: $selected-border-color;
+    opacity: 0.8;
+  }
+
+  .cardWrapper:not(:first-child) {
+    margin-top: -280px;
+  }
+}

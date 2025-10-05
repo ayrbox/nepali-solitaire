@@ -1,0 +1,139 @@
+
+$suit-size: 1.2em;
+
+.card-suit {
+  font-size: $suit-size;
+  font-weight: normal;
+  width: 50px;
+  height: 57px;
+  line-height: 57px;
+  position: absolute;
+  text-align: center;
+  // border: 2px solid red;
+  // overflow: hidden;
+}
+
+.middleCenterLarge {
+  @extend .card-suit;
+  font-size: 128px;
+  left: 33px;
+  top: 43px;
+}
+
+.topCenter {
+  @extend .card-suit;
+  left: 76px;
+  top: 24px;
+}
+
+.topLeft {
+  @extend .card-suit;
+  left: 30px;
+  top: 24px;
+}
+
+.topRight {
+  @extend .card-suit;
+  right: 30px;
+  top: 24px;
+}
+
+.middleCenter {
+  @extend .card-suit;
+  left: 76px;
+  top: 110px;
+}
+
+.middleTop {
+  @extend .card-suit;
+  left: 76px;
+  top: 70px;
+}
+
+.middleBottom {
+  @extend .card-suit;
+  bottom: 70px;
+  left: 76px;
+
+  transform: rotate(180deg);
+}
+
+.middleLeft {
+  @extend .card-suit;
+  left: 30px;
+  top: 110px;
+}
+
+.middleRight {
+  @extend .card-suit;
+  right: 30px;
+  top: 110px;
+}
+
+.middleTopCenter {
+  @extend .card-suit;
+  left: 76px;
+  top: 60px;
+}
+
+.middleTopLeft {
+  @extend .card-suit;
+  left: 30px;
+  top: 80px;
+}
+
+.middleTopRight {
+  @extend .card-suit;
+  right: 30px;
+  top: 80px;
+}
+
+.middleBottomLeft {
+  @extend .card-suit;
+  bottom: 80px;
+  left: 30px;
+  transform: rotate(180deg);
+}
+
+.middleBottomRight {
+  @extend .card-suit;
+  bottom: 80px;
+  right: 30px;
+  transform: rotate(180deg);
+}
+
+.middleBottomCenter {
+  @extend .card-suit;
+  bottom: 60px;
+  left: 76px;
+  transform: rotate(180deg);
+}
+
+.bottomCenter {
+  @extend .card-suit;
+  bottom: 24px;
+  left: 76px;
+  transform: rotate(180deg);
+}
+
+.bottomLeft {
+  @extend .card-suit;
+  bottom: 24px;
+  left: 30px;
+  transform: rotate(180deg);
+}
+
+.bottomRight {
+  @extend .card-suit;
+  bottom: 24px;
+  right: 30px;
+  transform: rotate(180deg);
+}
+
+.faceCard {
+  position: absolute;
+  left: 32px;
+  top: 26px;
+  width: 135px;
+  height: 228px;
+}
