@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 import { generateBoard, BoardState } from './LogicBoard';
@@ -15,7 +17,9 @@ export interface BoardContextActions {
 
 export type BoardContextValue = [BoardContextState, BoardContextActions];
 
-export const BoardContext = createContext<BoardContextValue | undefined>(undefined);
+export const BoardContext = createContext<BoardContextValue | undefined>(
+  undefined
+);
 
 interface BoardProviderProps {
   children: ReactNode;
@@ -27,7 +31,7 @@ const BoardProvider: React.FC<BoardProviderProps> = ({ children }) => {
   const reset = (): void => setBoard(generateBoard());
 
   const placeCard = ({ key, card }: { key: string; card: CardType }): void => {
-    setBoard(state => {
+    setBoard((state) => {
       const { cards } = state[key];
       return {
         ...state,

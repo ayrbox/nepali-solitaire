@@ -1,8 +1,24 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+'use client';
+
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from 'react';
 import shuffle from 'lodash/shuffle';
 import take from 'lodash/take';
 
-import { SUITS, RANKS, CardType, RankType, SuitType, RankName, SuitName } from '../../lib/constants';
+import {
+  SUITS,
+  RANKS,
+  CardType,
+  RankType,
+  SuitType,
+  RankName,
+  SuitName,
+} from '../../lib/constants';
 
 export interface DeckContextState {
   cards: CardType[];
@@ -17,7 +33,9 @@ export interface DeckContextActions {
 
 export type DeckContextValue = [DeckContextState, DeckContextActions];
 
-export const DeckContext = createContext<DeckContextValue | undefined>(undefined);
+export const DeckContext = createContext<DeckContextValue | undefined>(
+  undefined
+);
 
 const getNewDeck = (): CardType[] => {
   const allCards: CardType[] = RANKS.map(({ name: rank, value }: RankType) => {
@@ -36,7 +54,10 @@ const getNewDeck = (): CardType[] => {
   return [...shuffle(a), ...b];
 };
 
-const splitDeck = (cards: CardType[], count: number): [CardType[], CardType[]] => {
+const splitDeck = (
+  cards: CardType[],
+  count: number
+): [CardType[], CardType[]] => {
   const cardsCopy = [...cards]; // copy
   const drawn = take(cardsCopy, count);
   const remaining = cardsCopy.slice(count);

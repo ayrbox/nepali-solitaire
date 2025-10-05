@@ -5,8 +5,8 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   output: 'export',
   trailingSlash: true,
-  basePath: '/nepali-solitaire',
-  assetPrefix: '/nepali-solitaire/',
+  // basePath: '/nepali-solitaire',
+  // assetPrefix: '/nepali-solitaire/',
   images: {
     unoptimized: true,
   },

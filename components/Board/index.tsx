@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import uniq from 'lodash/uniq';
@@ -39,14 +41,15 @@ const Board: React.FC = () => {
     Object.entries(board).forEach(([key], idx) => {
       placeCard({ key, card: drawnCards[idx] });
     });
-  }, [resetDeck, board, drawCard, placeCard]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleCardSelect = (key: string) => (e: React.MouseEvent) => {
     e.preventDefault();
     if (selectedItems.includes(key)) {
-      setSelectedItems(prev => prev.filter(k => key !== k));
+      setSelectedItems((prev) => prev.filter((k) => key !== k));
     } else {
-      setSelectedItems(prev => uniq([...prev, key]));
+      setSelectedItems((prev) => uniq([...prev, key]));
     }
   };
 
@@ -73,7 +76,7 @@ const Board: React.FC = () => {
         }}
       >
         <div className={styles.boardWrapper} style={{ fontSize: '12.5px' }}>
-          {Object.keys(board).map(boardKey => {
+          {Object.keys(board).map((boardKey) => {
             const { cards } = board[boardKey];
             const isSelected = selectedItems.includes(boardKey);
             return (
