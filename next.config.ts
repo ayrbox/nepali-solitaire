@@ -7,9 +7,6 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   // basePath: '/nepali-solitaire',
   // assetPrefix: '/nepali-solitaire/',
-  images: {
-    unoptimized: true,
-  },
 };
 
 export default nextConfig;

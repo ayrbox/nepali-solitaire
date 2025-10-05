@@ -1,7 +1,6 @@
-import React from "react";
-import CardBase from "../CardBase";
-import { SuitName, SUIT } from "../../lib/constants";
-import { cardPositions } from "./cardPositions";
+import React from 'react';
+import CardBase from '../CardBase';
+import { SuitName, SUIT } from '../../lib/constants';
 
 interface AceProps {
   suit: SuitName;
@@ -12,10 +11,12 @@ const Ace: React.FC<AceProps> = ({ suit, selected }) => {
   const { symbol } = SUIT[suit];
   return (
     <CardBase suit={suit} rank="ace" selected={selected}>
-      <span
-        className={cardPositions.middleCenterLarge}
-        dangerouslySetInnerHTML={{ __html: symbol }}
-      />
+      <div className="h-full w-full flex items-center justify-center">
+        <span
+          className="text-9xl"
+          dangerouslySetInnerHTML={{ __html: symbol }}
+        />
+      </div>
     </CardBase>
   );
 };
