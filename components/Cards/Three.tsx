@@ -1,0 +1,35 @@
+import React from "react";
+import CardBase from "../CardBase";
+import { SuitName, SUIT } from "../../lib/constants";
+
+import { cardPositions } from "./cardPositions";
+
+interface ThreeProps {
+  suit: SuitName;
+  selected: boolean;
+}
+
+const Three: React.FC<ThreeProps> = ({ suit, selected }) => {
+  const { symbol } = SUIT[suit];
+
+  return (
+    <CardBase suit={suit} rank="three" selected={selected}>
+      <span
+        className={cardPositions.topCenter}
+        dangerouslySetInnerHTML={{ __html: symbol }}
+      />
+
+      <span
+        className={cardPositions.middleCenter}
+        dangerouslySetInnerHTML={{ __html: symbol }}
+      />
+
+      <span
+        className={cardPositions.bottomCenter}
+        dangerouslySetInnerHTML={{ __html: symbol }}
+      />
+    </CardBase>
+  );
+};
+
+export default Three;
