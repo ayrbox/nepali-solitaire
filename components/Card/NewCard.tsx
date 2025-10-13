@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 
 type Suit = 'Club' | 'Diamond' | 'Spade' | 'Heart';
-type RankFull =
+type RankName =
   | 'Ace'
   | '2'
   | '3'
@@ -17,7 +17,7 @@ type RankFull =
   | 'Queen'
   | 'King';
 
-export type Card = `${RankFull}_Of_${Suit}`;
+export type Card = `${RankName}_Of_${Suit}`;
 
 import {
   Ace,
@@ -73,26 +73,85 @@ type Rank =
   | 'Q'
   | 'K';
 
+export type CardName = keyof typeof deckOfCards;
+export const deckOfCards: Record<Card, { suit: Suit; rank: Rank }> = {
+  Ace_Of_Club: { suit: 'Club', rank: 'A' },
+  '2_Of_Club': { suit: 'Club', rank: '2' },
+  '3_Of_Club': { suit: 'Club', rank: '3' },
+  '4_Of_Club': { suit: 'Club', rank: '4' },
+  '5_Of_Club': { suit: 'Club', rank: '5' },
+  '6_Of_Club': { suit: 'Club', rank: '6' },
+  '7_Of_Club': { suit: 'Club', rank: '7' },
+  '8_Of_Club': { suit: 'Club', rank: '8' },
+  '9_Of_Club': { suit: 'Club', rank: '9' },
+  '10_Of_Club': { suit: 'Club', rank: '10' },
+  Jack_Of_Club: { suit: 'Club', rank: 'J' },
+  Queen_Of_Club: { suit: 'Club', rank: 'Q' },
+  King_Of_Club: { suit: 'Club', rank: 'K' },
+
+  Ace_Of_Spade: { suit: 'Spade', rank: 'A' },
+  '2_Of_Spade': { suit: 'Spade', rank: '2' },
+  '3_Of_Spade': { suit: 'Spade', rank: '3' },
+  '4_Of_Spade': { suit: 'Spade', rank: '4' },
+  '5_Of_Spade': { suit: 'Spade', rank: '5' },
+  '6_Of_Spade': { suit: 'Spade', rank: '6' },
+  '7_Of_Spade': { suit: 'Spade', rank: '7' },
+  '8_Of_Spade': { suit: 'Spade', rank: '8' },
+  '9_Of_Spade': { suit: 'Spade', rank: '9' },
+  '10_Of_Spade': { suit: 'Spade', rank: '10' },
+  Jack_Of_Spade: { suit: 'Spade', rank: 'J' },
+  Queen_Of_Spade: { suit: 'Spade', rank: 'Q' },
+  King_Of_Spade: { suit: 'Spade', rank: 'K' },
+
+  Ace_Of_Diamond: { suit: 'Diamond', rank: 'A' },
+  '2_Of_Diamond': { suit: 'Diamond', rank: '2' },
+  '3_Of_Diamond': { suit: 'Diamond', rank: '3' },
+  '4_Of_Diamond': { suit: 'Diamond', rank: '4' },
+  '5_Of_Diamond': { suit: 'Diamond', rank: '5' },
+  '6_Of_Diamond': { suit: 'Diamond', rank: '6' },
+  '7_Of_Diamond': { suit: 'Diamond', rank: '7' },
+  '8_Of_Diamond': { suit: 'Diamond', rank: '8' },
+  '9_Of_Diamond': { suit: 'Diamond', rank: '9' },
+  '10_Of_Diamond': { suit: 'Diamond', rank: '10' },
+  Jack_Of_Diamond: { suit: 'Diamond', rank: 'J' },
+  Queen_Of_Diamond: { suit: 'Diamond', rank: 'Q' },
+  King_Of_Diamond: { suit: 'Diamond', rank: 'K' },
+
+  Ace_Of_Heart: { suit: 'Heart', rank: 'A' },
+  '2_Of_Heart': { suit: 'Heart', rank: '2' },
+  '3_Of_Heart': { suit: 'Heart', rank: '3' },
+  '4_Of_Heart': { suit: 'Heart', rank: '4' },
+  '5_Of_Heart': { suit: 'Heart', rank: '5' },
+  '6_Of_Heart': { suit: 'Heart', rank: '6' },
+  '7_Of_Heart': { suit: 'Heart', rank: '7' },
+  '8_Of_Heart': { suit: 'Heart', rank: '8' },
+  '9_Of_Heart': { suit: 'Heart', rank: '9' },
+  '10_Of_Heart': { suit: 'Heart', rank: '10' },
+  Jack_Of_Heart: { suit: 'Heart', rank: 'J' },
+  Queen_Of_Heart: { suit: 'Heart', rank: 'Q' },
+  King_Of_Heart: { suit: 'Heart', rank: 'K' },
+};
+
+const getRenderDetail = (suit: Suit): { sym: CardSymbol; color: CardColor } => {
+  switch (suit) {
+    case 'Club':
+      return { sym: '&clubs;', color: '#000' };
+    case 'Spade':
+      return { sym: '&spades;', color: '#000' };
+    case 'Diamond':
+      return { sym: '&diams;', color: '#df0000' };
+    case 'Heart':
+      return { sym: '&hearts;', color: '#df0000' };
+  }
+};
+
 const Base: React.FC<{
   children: React.ReactNode;
-  symbol: CardSymbol;
+  suit: Suit;
   rank: Rank;
   selected?: boolean;
-}> = ({ children, symbol, rank, selected = false }) => {
-  let color: CardColor = '#000';
-  switch (symbol) {
-    case '&clubs;':
-    case '♠':
-      color = '#000';
-      break;
-    case '&diams;':
-    case '&hearts;':
-    default:
-      color = '#df0000';
-      break;
-  }
-  console.log('>>>', color, symbol);
-
+}> = ({ children, suit, rank, selected = false }) => {
+  const { color, sym } = getRenderDetail(suit);
   return (
     <div
       className={clsx(
@@ -105,22 +164,29 @@ const Base: React.FC<{
     >
       <div className="leading-none absolute text-center left-2 top-3">
         <span className="block text-2xl font-bold leading-3 h-3">{rank}</span>
-        <span className="block text-2xl font-bold">{symbol}</span>
+        <span
+          className="block text-2xl font-bold"
+          dangerouslySetInnerHTML={{ __html: sym }}
+        />
       </div>
       <div className="border h-full flex items-center justify-center">
         {children}
       </div>
       <div className="leading-none absolute text-center bottom-3 right-2 rotate-180">
         <span className="block text-2xl font-bold leading-3 h-3">{rank}</span>
-        <span className="block text-2xl font-bold">{symbol}</span>
+        <span
+          className="block text-2xl font-bold"
+          dangerouslySetInnerHTML={{ __html: sym }}
+        />
       </div>
     </div>
   );
 };
 
 const NewCard: React.FC<CardProps> = ({ card, selected }) => {
+  const { rank, suit } = deckOfCards[card];
   return (
-    <Base rank="A" symbol="&spades;">
+    <Base rank={rank} suit={suit}>
       MORE HERE
     </Base>
   );

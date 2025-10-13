@@ -1,4 +1,10 @@
-import React from 'react';
+'use client';
+
+import React, {
+  ButtonHTMLAttributes,
+  EventHandler,
+  MouseEventHandler,
+} from 'react';
 
 import {
   SUITS,
@@ -9,36 +15,34 @@ import {
   RankName,
   SuitName,
 } from '../../lib/constants';
-import NewCard, { Card } from '../../components/Card/NewCard';
+import NewCard, { CardName, deckOfCards } from '../../components/Card/NewCard';
+import { shuffle } from 'lodash';
 
-const deck = new Map<Card, { name: string; sym: string; color: string }>([
-  ['Ace_Of_Spade', { name: 'A', sym: '&clubs', color: '#000' }],
-  ['Ace_Of_Club', { name: 'A', sym: '&clubs', color: '#000' }],
-]);
+const cards: CardName[] = Object.keys(deckOfCards) as CardName[];
 
 const Samples: React.FC = () => {
-  const allCards: CardType[] = RANKS.map(({ name: rank, value }: RankType) => {
-    return SUITS.map(({ name: suit }: SuitType) => ({
-      rank: rank as RankName,
-      suit: suit as SuitName,
-      value,
-    }));
-  }).reduce((deckCards: CardType[], suitCards: CardType[]) => {
-    return [...deckCards, ...suitCards];
-  }, []);
+  const [deck, setDeck] = React.useState<CardName[]>(cards);
+
+  const handleShuffle: MouseEventHandler = (e) => {
+    e.preventDefault();
+    setDeck(shuffle(deck));
+  };
 
   return (
     <>
+      <button
+        type="button"
+        onClick={handleShuffle}
+        className="p-3 bg-red-400 rounded"
+      >
+        Shuffle
+      </button>
       <div className="grid grid-cols-7 gap-y-4 justify-items-center">
-        {allCards.map(({ rank, suit }, index) => (
-          <NewCard
-            key={`${rank}-${suit}-${index}`}
-            suit={suit}
-            rank={rank}
-            selected={false}
-          />
+        {deck.map((key) => (
+          <NewCard key={key} card={key} selected={false} />
         ))}
       </div>
+      <pre>{JSON.stringify(deck, null, 2)}</pre>
     </>
   );
 };
