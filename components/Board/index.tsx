@@ -6,7 +6,6 @@ import uniq from 'lodash/uniq';
 
 import { useDeck } from '../../contexts/Deck';
 import { useBoard } from '../../contexts/BoardContext';
-import Timer from '../Timer';
 
 import Position from '../Position';
 
@@ -55,7 +54,7 @@ const Board: React.FC = () => {
     <div className="w-screen h-screen">
       <div
         className={clsx('flex flex-wrap -mx-4', {
-          'hidden': deckState.remaining > 0,
+          hidden: deckState.remaining > 0,
         })}
       >
         <div className="flex-1 px-4 text-center">
@@ -65,7 +64,6 @@ const Board: React.FC = () => {
           </h1>
         </div>
       </div>
-      <Timer stop={deckState.remaining === 0} />
       <div className="flex items-center justify-center">
         <div className="inline-grid grid-cols-4 grid-rows-3 gap-5 text-[12.5px]">
           {Object.keys(board).map((boardKey) => {

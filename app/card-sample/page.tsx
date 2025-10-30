@@ -23,7 +23,7 @@ const Samples: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ fontSize: '14.5px' }}>
+    <div className="grid grid-cols-7 gap-y-4 justify-items-center">
       {allCards.map(({ rank, suit }, index) => (
         <Card
           key={`${rank}-${suit}-${index}`}
@@ -32,8 +32,6 @@ const Samples: React.FC = () => {
           selected={false}
         />
       ))}
-
-      <pre>{JSON.stringify(allCards, null, 2)}</pre>
     </div>
   );
 };

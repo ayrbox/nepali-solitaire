@@ -47,11 +47,11 @@ const getNewDeck = (): CardType[] => {
   }).reduce((deckCards: CardType[], suitCards: CardType[]) => {
     return [...deckCards, ...suitCards];
   }, []);
-  // return shuffle(allCards);
+  return shuffle(allCards);
   // Make game easy
-  const a = [...allCards].splice(0, 40);
-  const b = [...allCards].splice(40);
-  return [...shuffle(a), ...b];
+  // const a = [...allCards].splice(0, 40);
+  // const b = [...allCards].splice(40);
+  // return [...shuffle(a), ...b];
 };
 
 const splitDeck = (
